@@ -17,8 +17,8 @@ export async function POST(request) {
       return NextResponse.json({ error: "Invalid book ID" }, { status: 400 });
     }
 
-    const db   = await getDb();
-    const book = await db
+    const database = await getDb();
+    const book = await database
       .collection("books")
       .findOne({ _id: new ObjectId(bookId) });
 
@@ -33,7 +33,7 @@ export async function POST(request) {
       );
     }
 
-    const alreadyBorrowed = await db
+    const alreadyBorrowed = await database
       .collection("borrows")
       .findOne({ userId: session.user.id, bookId });
 
@@ -44,14 +44,14 @@ export async function POST(request) {
       );
     }
 
-    await db
+    await database
       .collection("books")
       .updateOne(
         { _id: new ObjectId(bookId) },
         { $inc: { available_quantity: -1 } }
       );
 
-    await db.collection("borrows").insertOne({
+    await database.collection("borrows").insertOne({
       userId:     session.user.id,
       bookId,
       bookTitle:  book.title,
@@ -74,15 +74,15 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const db      = await getDb();
-    const borrows = await db
+    const database = await getDb();
+    const borrowedBooks = await database
       .collection("borrows")
       .find({ userId: session.user.id })
       .sort({ borrowedAt: -1 })
       .toArray();
 
     return NextResponse.json(
-      borrows.map((b) => ({ ...b, _id: b._id.toString() }))
+      borrowedBooks.map((borrow) => ({ ...borrow, _id: borrow._id.toString() }))
     );
   } catch (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });

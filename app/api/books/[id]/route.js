@@ -8,8 +8,8 @@ export async function GET(request, { params }) {
       return NextResponse.json({ error: "Invalid book ID" }, { status: 400 });
     }
 
-    const db   = await getDb();
-    const book = await db
+    const database = await getDb();
+    const book = await database
       .collection("books")
       .findOne({ _id: new ObjectId(params.id) });
 

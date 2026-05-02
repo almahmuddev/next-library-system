@@ -6,7 +6,7 @@
 
 ## 🔗 Live URL
 
-🚀 **[Live Demo](https://your-deployment-url.vercel.app)** _(Add your URL after deployment)_
+🚀 **[Live Demo](https://your-deployment-url.netlify.app)** _(Add your URL after deployment)_
 
 ---
 
@@ -192,13 +192,26 @@ Toggle with the 🌙/☀️ button in the navbar.
 
 ---
 
-## 🌐 Deployment (Vercel)
+## 🌐 Deployment (Netlify)
 
 1. Push repo to GitHub
-2. Import project on [vercel.com](https://vercel.com)
-3. Add all environment variables from `.env.local.example`
-4. Update `BETTER_AUTH_URL` and `NEXT_PUBLIC_APP_URL` to your production domain
-5. Deploy — all routes handle page reloads correctly ✅
+2. Go to [netlify.com](https://netlify.com) and click "Add new site" → "Import an existing project"
+3. Connect your GitHub repository
+4. Netlify will auto-detect Next.js settings
+5. Add all environment variables in Site settings → Environment variables:
+   - `MONGODB_URI`
+   - `BETTER_AUTH_SECRET`
+   - `BETTER_AUTH_URL` (use your Netlify URL, e.g., `https://your-site.netlify.app`)
+   - `GOOGLE_CLIENT_ID`
+   - `GOOGLE_CLIENT_SECRET`
+   - `NEXT_PUBLIC_APP_URL` (same as BETTER_AUTH_URL)
+6. Click "Deploy site"
+7. After deployment, visit `https://your-site.netlify.app/api/seed` to populate the database
+
+**Note:** Make sure to install the Next.js plugin:
+```bash
+npm install --save-dev @netlify/plugin-nextjs
+```
 
 ---
 

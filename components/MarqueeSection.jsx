@@ -1,4 +1,4 @@
-const ITEMS = [
+const ANNOUNCEMENT_ITEMS = [
   { text: "New Arrival: The Midnight Library",                 icon: "📚" },
   { text: "Special Discount on Annual Memberships",            icon: "⚡" },
   { text: "New Arrival: Clean Code — Robert C. Martin",        icon: "📖" },
@@ -12,14 +12,14 @@ const ITEMS = [
 ];
 
 export default function MarqueeSection() {
-  const doubled = [...ITEMS, ...ITEMS];
+  const doubledItems = [...ANNOUNCEMENT_ITEMS, ...ANNOUNCEMENT_ITEMS];
 
   return (
     <div className="bg-primary/8 border-y border-primary/15 py-3 overflow-hidden select-none">
       <div className="marquee-track">
-        {doubled.map((item, i) => (
+        {doubledItems.map((item, index) => (
           <span
-            key={i}
+            key={index}
             className="flex items-center gap-2.5 mx-8 text-sm text-base-content/70 whitespace-nowrap"
           >
             <span className="text-base leading-none">{item.icon}</span>

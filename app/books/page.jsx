@@ -1,11 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import BookCard from "@/components/BookCard";
 import CategorySidebar from "@/components/CategorySidebar";
 import { FiSearch, FiX } from "react-icons/fi";
 
-export default function BooksPage() {
+function BooksContent() {
   const searchParams = useSearchParams();
   const [books,    setBooks]    = useState([]);
   const [loading,  setLoading]  = useState(true);
@@ -24,14 +24,17 @@ export default function BooksPage() {
     if (search)   params.set("search",   search);
     if (category) params.set("category", category);
 
-    const t = setTimeout(() => {
+    const debounceTimer = setTimeout(() => {
       fetch(`/api/books?${params}`)
-        .then((r) => r.json())
-        .then((d) => { setBooks(Array.isArray(d) ? d : []); setLoading(false); })
+        .then((response) => response.json())
+        .then((data) => { 
+          setBooks(Array.isArray(data) ? data : []); 
+          setLoading(false); 
+        })
         .catch(() => setLoading(false));
     }, 280);
 
-    return () => clearTimeout(t);
+    return () => clearTimeout(debounceTimer);
   }, [search, category]);
 
   const clearFilters = () => { setSearch(""); setCategory(""); };
@@ -79,8 +82,8 @@ export default function BooksPage() {
         <div className="flex-1 min-w-0">
           {loading ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="card bg-base-200 border border-base-300 h-80 animate-pulse" />
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="card bg-base-200 border border-base-300 h-80 animate-pulse" />
               ))}
             </div>
           ) : books.length === 0 ? (
@@ -104,5 +107,21 @@ export default function BooksPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function BooksPage() {
+  return (
+    <Suspense fallback={
+      <div className="max-w-7xl mx-auto px-4 py-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mt-10">
+          {[...Array(6)].map((_, index) => (
+            <div key={index} className="card bg-base-200 border border-base-300 h-80 animate-pulse" />
+          ))}
+        </div>
+      </div>
+    }>
+      <BooksContent />
+    </Suspense>
   );
 }

@@ -1,11 +1,11 @@
-const CATS = [
+const CATEGORIES = [
   { label: "All Books", emoji: "📚", value: ""        },
   { label: "Story",     emoji: "📖", value: "Story"   },
   { label: "Tech",      emoji: "💻", value: "Tech"    },
   { label: "Science",   emoji: "🔬", value: "Science" },
 ];
 
-const ACTIVE_CLASS = {
+const ACTIVE_CATEGORY_STYLES = {
   "":       "bg-primary/15 text-primary border-primary/30",
   Story:    "bg-secondary/15 text-secondary border-secondary/30",
   Tech:     "bg-info/15 text-info border-info/30",
@@ -20,20 +20,20 @@ export default function CategorySidebar({ selected, onSelect }) {
           Categories
         </h3>
         <ul className="flex flex-row lg:flex-col gap-2 flex-wrap">
-          {CATS.map((c) => {
-            const isActive = selected === c.value;
+          {CATEGORIES.map((category) => {
+            const isActive = selected === category.value;
             return (
-              <li key={c.value} className="w-auto lg:w-full">
+              <li key={category.value} className="w-auto lg:w-full">
                 <button
-                  onClick={() => onSelect(c.value)}
+                  onClick={() => onSelect(category.value)}
                   className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-sm font-medium w-full text-left border transition-all ${
                     isActive
-                      ? `${ACTIVE_CLASS[c.value]} border`
+                      ? `${ACTIVE_CATEGORY_STYLES[category.value]} border`
                       : "border-transparent text-base-content/60 hover:bg-base-300 hover:text-base-content"
                   }`}
                 >
-                  <span className="text-base leading-none">{c.emoji}</span>
-                  {c.label}
+                  <span className="text-base leading-none">{category.emoji}</span>
+                  {category.label}
                 </button>
               </li>
             );

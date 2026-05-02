@@ -19,6 +19,7 @@
     "swiper": "^11.1.15"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^5.7.2",
     "autoprefixer": "^10.0.1",
     "daisyui": "^4.10.1",
     "eslint": "^8",

@@ -15,8 +15,11 @@ export default function FeaturedBooks() {
 
   useEffect(() => {
     fetch("/api/books?limit=4")
-      .then((r) => r.json())
-      .then((d) => { setBooks(Array.isArray(d) ? d : []); setLoading(false); })
+      .then((response) => response.json())
+      .then((data) => { 
+        setBooks(Array.isArray(data) ? data : []); 
+        setLoading(false); 
+      })
       .catch(() => setLoading(false));
   }, []);
 
@@ -48,9 +51,9 @@ export default function FeaturedBooks() {
         {/* Loading skeleton */}
         {loading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {[...Array(4)].map((_, i) => (
+            {[...Array(4)].map((_, index) => (
               <div
-                key={i}
+                key={index}
                 className="card bg-base-200 border border-base-300 h-80 animate-pulse"
               />
             ))}
