@@ -6,7 +6,7 @@
 
 ## 🔗 Live URL
 
-<!-- [https://bookshelf-digital-library.vercel.app](https://bookshelf-digital-library.vercel.app) -->
+🚀 **[Live Demo](https://your-deployment-url.vercel.app)** _(Add your URL after deployment)_
 
 ---
 
@@ -46,16 +46,28 @@
 
 ```json
 "better-auth":      "^1.0.0",
-"mongodb":          "^6.3.0",
-"next":             "14.2.3",
+"mongodb":          "^6.21.0",
+"next":             "14.2.35",
 "react-hot-toast":  "^2.4.1",
 "react-icons":      "^5.1.0",
-"swiper":           "^11.1.1"
+"swiper":           "^11.1.15"
 ```
 
 ---
 
+## 🚀 Getting Started
+
+### 1 · Clone & Install
+
+```bash
+git clone https://github.com/YOUR_USERNAME/bookshelf-digital-library
+cd bookshelf-digital-library
+npm install
+```
+
 ### 2 · Configure `.env.local`
+
+Create a `.env.local` file in the root directory (or copy from `.env.local.example`):
 
 ```env
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/bookshelf
@@ -187,6 +199,30 @@ Toggle with the 🌙/☀️ button in the navbar.
 3. Add all environment variables from `.env.local.example`
 4. Update `BETTER_AUTH_URL` and `NEXT_PUBLIC_APP_URL` to your production domain
 5. Deploy — all routes handle page reloads correctly ✅
+
+---
+
+## 🆘 Troubleshooting
+
+### Books not showing?
+- Visit `http://localhost:3000/api/seed` to populate the database
+- Check if MongoDB URI is correct in `.env.local`
+- Verify MongoDB Atlas allows connections from your IP
+
+### 10+ second delays on buttons?
+- Make sure `BETTER_AUTH_SECRET` is a real 32+ character secret (not placeholder)
+- Run `node generate-secret.js` to generate a valid secret
+- Restart dev server after updating `.env.local`
+
+### MongoDB SSL/TLS errors?
+- Check if MongoDB URI includes `?retryWrites=true&w=majority`
+- Verify your MongoDB Atlas cluster is active
+- Check Network Access settings in MongoDB Atlas
+
+### Google OAuth not working?
+- Verify redirect URI in Google Console: `http://localhost:3000/api/auth/callback/google`
+- Check `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are correct
+- Email/password login should still work
 
 ---
 
