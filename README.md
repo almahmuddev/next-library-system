@@ -55,28 +55,6 @@
 
 ---
 
-## 🚀 Getting Started
-
-### 1 · Clone & Install
-
-```bash
-git clone https://github.com/YOUR_USERNAME/bookshelf-digital-library
-cd bookshelf-digital-library
-npm install
-```
-
-### 2 · Configure `.env.local`
-
-Create a `.env.local` file in the root directory (copy from `.env.example`):
-
-```env
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/bookshelf
-BETTER_AUTH_SECRET=your-super-secret-key-minimum-32-characters-long
-BETTER_AUTH_URL=http://localhost:3000
-GOOGLE_CLIENT_ID=your-google-client-id.apps.googleusercontent.com
-GOOGLE_CLIENT_SECRET=your-google-client-secret
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-```
 
 ### 3 · Seed the Database (one-time)
 
