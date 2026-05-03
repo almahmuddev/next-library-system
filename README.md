@@ -50,7 +50,7 @@
 "next":             "14.2.35",
 "react-hot-toast":  "^2.4.1",
 "react-icons":      "^5.1.0",
-"swiper":           "^11.1.15"
+"swiper":           "^12.1.4"
 ```
 
 ---
@@ -67,7 +67,7 @@ npm install
 
 ### 2 · Configure `.env.local`
 
-Create a `.env.local` file in the root directory (or copy from `.env.local.example`):
+Create a `.env.local` file in the root directory (copy from `.env.example`):
 
 ```env
 MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/bookshelf
