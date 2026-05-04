@@ -1,15 +1,15 @@
 import Link from "next/link";
 import {
-  FiBook, FiFacebook, FiTwitter,
+  FiBook, FiFacebook, FiLinkedin,
   FiInstagram, FiGithub, FiMail,
   FiPhone, FiMapPin, FiHeart,
 } from "react-icons/fi";
 
 const SOCIAL = [
-  { Icon: FiFacebook,  href: "#", label: "Facebook"  },
-  { Icon: FiTwitter,   href: "#", label: "Twitter"   },
-  { Icon: FiInstagram, href: "#", label: "Instagram" },
-  { Icon: FiGithub,    href: "#", label: "GitHub"    },
+  { Icon: FiFacebook,  href: "https://www.facebook.com/share/1AKXLBv3Gv", label: "Facebook", target: "_blank"  },
+  { Icon: FiLinkedin,  href: "https://www.linkedin.com/in/almahmuddev/", label: "LinkedIn", target: "_blank"  },
+  { Icon: FiInstagram, href: "https://www.instagram.com/almahmuddev/", label: "Instagram", target: "_blank" },
+  { Icon: FiGithub,    href: "https://github.com/almahmuddev", label: "GitHub", target: "_blank"    },
 ];
 
 const QUICK_LINKS = [
@@ -42,10 +42,12 @@ export default function Footer() {
               borrow digitally, and expand your world — all in one place.
             </p>
             <div className="flex gap-1 mt-6">
-              {SOCIAL.map(({ Icon, href, label }) => (
+              {SOCIAL.map(({ Icon, href, label, target }) => (
                 <a
                   key={label}
                   href={href}
+                  target={target}
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="btn btn-ghost btn-sm btn-square text-base-content/40 hover:text-primary"
                 >
@@ -85,19 +87,23 @@ export default function Footer() {
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <FiMail className="text-primary text-sm" />
                 </div>
-                hello@bookshelf.digital
+                <a href="mailto:devalmahmud@gmail.com" className="hover:text-primary transition-colors">
+                  devalmahmud@gmail.com
+                </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-base-content/55">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <FiPhone className="text-primary text-sm" />
                 </div>
-                +1 (555) 000-1234
+                <a href="tel:+8801874991984" className="hover:text-primary transition-colors">
+                  +88 01874991984
+                </a>
               </li>
               <li className="flex items-start gap-3 text-sm text-base-content/55">
                 <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0 mt-0.5">
                   <FiMapPin className="text-primary text-sm" />
                 </div>
-                123 Library Lane, Knowledge City, KN 00100
+                Sylhet, Bangladesh
               </li>
             </ul>
           </div>
@@ -109,7 +115,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Bookshelf Digital Library. All rights reserved.
           </p>
           <p className="text-sm text-base-content/40 flex items-center gap-1">
-            Made with <FiHeart className="text-primary" /> by Bookshelf Team
+            Made with <FiHeart className="text-primary" /> by Mahmud Khan
           </p>
         </div>
       </div>
