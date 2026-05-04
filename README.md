@@ -12,6 +12,22 @@
 
 ---
 
+## 📸 Screenshots
+
+### Home Page
+![Home Page](https://next-library-system-iota.vercel.app/api/og)
+
+### All Books
+![All Books Page](https://via.placeholder.com/1200x600/0f172a/f59e0b?text=All+Books+Page)
+
+### Book Detail
+![Book Detail](https://via.placeholder.com/1200x600/0f172a/f59e0b?text=Book+Detail+Page)
+
+### User Profile
+![User Profile](https://via.placeholder.com/1200x600/0f172a/f59e0b?text=User+Profile)
+
+---
+
 ## ✨ Key Features
 
 | Feature | Description |
