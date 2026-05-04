@@ -2,11 +2,13 @@
 
 > A seamless and modern web application that digitizes the traditional library experience.
 
-![Bookshelf Preview](https://picsum.photos/seed/bookshelf-hero/1200/400)
-
 ## 🔗 Live URL
 
-🚀 **[Live Demo](https://your-deployment-url.netlify.app)** _(Add your URL after deployment)_
+🚀 **[Live Demo](https://next-library-system-iota.vercel.app)**
+
+## 📂 GitHub Repository
+
+🔗 **[Source Code](https://github.com/almahmuddev/next-library-system)**
 
 ---
 
@@ -39,40 +41,6 @@
 | **Swiper.js** | Book carousel animation (required) |
 | **React Hot Toast** | Toast notifications |
 | **React Icons** | Icon set |
-
----
-
-## 📦 NPM Packages
-
-```json
-"better-auth":      "^1.0.0",
-"mongodb":          "^6.21.0",
-"next":             "14.2.35",
-"react-hot-toast":  "^2.4.1",
-"react-icons":      "^5.1.0",
-"swiper":           "^12.1.4"
-```
-
----
-
-
-### 3 · Seed the Database (one-time)
-
-Start the dev server, then visit in your browser:
-
-```
-http://localhost:3000/api/seed
-```
-
-You should see: `✅ Successfully seeded 12 books into the database!`
-
-### 4 · Run
-
-```bash
-npm run dev      # development server → http://localhost:3000
-npm run build    # production build
-npm start        # production server
-```
 
 ---
 
@@ -169,65 +137,3 @@ bookshelf/
 Toggle with the 🌙/☀️ button in the navbar.
 
 ---
-
-## 🌐 Deployment (Netlify)
-
-1. Push repo to GitHub
-2. Go to [netlify.com](https://netlify.com) and click "Add new site" → "Import an existing project"
-3. Connect your GitHub repository
-4. Netlify will auto-detect Next.js settings
-5. Add all environment variables in Site settings → Environment variables:
-   - `MONGODB_URI`
-   - `BETTER_AUTH_SECRET`
-   - `BETTER_AUTH_URL` (use your Netlify URL, e.g., `https://your-site.netlify.app`)
-   - `GOOGLE_CLIENT_ID`
-   - `GOOGLE_CLIENT_SECRET`
-   - `NEXT_PUBLIC_APP_URL` (same as BETTER_AUTH_URL)
-6. Click "Deploy site"
-7. After deployment, visit `https://your-site.netlify.app/api/seed` to populate the database
-
-**Note:** Make sure to install the Next.js plugin:
-```bash
-npm install --save-dev @netlify/plugin-nextjs
-```
-
----
-
-## 🆘 Troubleshooting
-
-### Books not showing?
-- Visit `http://localhost:3000/api/seed` to populate the database
-- Check if MongoDB URI is correct in `.env.local`
-- Verify MongoDB Atlas allows connections from your IP
-
-### 10+ second delays on buttons?
-- Make sure `BETTER_AUTH_SECRET` is a real 32+ character secret (not placeholder)
-- Run `node generate-secret.js` to generate a valid secret
-- Restart dev server after updating `.env.local`
-
-### MongoDB SSL/TLS errors?
-- Check if MongoDB URI includes `?retryWrites=true&w=majority`
-- Verify your MongoDB Atlas cluster is active
-- Check Network Access settings in MongoDB Atlas
-
-### Google OAuth not working?
-- Verify redirect URI in Google Console: `http://localhost:3000/api/auth/callback/google`
-- Check `GOOGLE_CLIENT_ID` and `GOOGLE_CLIENT_SECRET` are correct
-- Email/password login should still work
-
----
-
-## 📋 Suggested Git Commits
-
-```bash
-git commit -m "init: project setup, tailwind, daisyui config"
-git commit -m "feat: mongodb connection and BetterAuth setup"
-git commit -m "feat: root layout, navbar with theme toggle, footer"
-git commit -m "feat: theme system - dark midnight amber + light warm ivory"
-git commit -m "feat: home page - banner, marquee, why-us, categories"
-git commit -m "feat: seed 12 books and books API routes"
-git commit -m "feat: all books page with search and category filter sidebar"
-git commit -m "feat: login and register pages with Google OAuth"
-git commit -m "feat: book detail private route with borrow logic"
-git commit -m "feat: my profile and update profile private routes"
-```
